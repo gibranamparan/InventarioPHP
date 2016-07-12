@@ -1,18 +1,6 @@
 <?php 
 	//Código para conectar
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbName = "inventario";
-
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbName);
-	$conn->set_charset("utf8");
-
-	// Check connection
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	} 	
+	require_once('conectar_db.php');	
 
 	//Mostrar confirmacion de borrado
 	if(isset($_GET["personaID"])){
@@ -55,6 +43,8 @@
 	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
+	<!-- Se esta insertando el menú-->
+	<?php require('render_menu.php');?>
 	<!-- Mostrar datos de la tabla de personas-->
 	<div class="container">
 	<div class="panel panel-primary">
