@@ -1,6 +1,7 @@
 <?php 
 	//Código para conectar
-	require_once('conectar_db.php');	
+	define('__ROOT__', dirname(dirname(__FILE__)));
+	require_once(__ROOT__.'\conectar_db.php');	
 
 	//Mostrar confirmacion de borrado
 	if(isset($_GET["equipoID"])){

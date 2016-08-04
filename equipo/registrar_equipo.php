@@ -1,6 +1,7 @@
 <?php 
 	//Código para conectar
-	require_once('conectar_db.php');	
+	define('__ROOT__', dirname(dirname(__FILE__)));
+	require_once(__ROOT__.'\conectar_db.php');	
 
 	if(isset($_POST["btnEnviar"])){
 		$nombre = $_POST["nombre"];
@@ -8,7 +9,8 @@
 		$cantidadMaxima = $_POST["cantidadMaxima"];
 
 		//Codigo para ejecutar query
-		$sql = "INSERT INTO equipo(nombre, costo, cantidadMaxima)value('$nombre','$costo','$cantidadMaxima')";
+		$sql = "INSERT INTO equipo(nombre, costo, cantidadMaxima)
+				value('$nombre','$costo','$cantidadMaxima')";
 		$result = $conn->query($sql);
 
 		//Si se creo el registro lo redirecciona al index
@@ -27,7 +29,7 @@
 </head>
 <body>
 	<!-- Se esta insertando el menú-->
-	<?php require('render_menu.php');?>
+	<?php require(__ROOT__.'\render_menu.php');?>
 	
 	<!-- Mostrar datos de la tabla de personas-->
 	<div class="container">

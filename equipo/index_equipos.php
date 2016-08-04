@@ -1,6 +1,12 @@
 <?php 
+	session_start();
+	$estaLogeado = isset($_SESSION['userID']);
+	if(!$estaLogeado){
+		header("location: /inventario/usuarios/login.php");
+	}
 	//Código para conectar
-	require_once('conectar_db.php');
+	define('__ROOT__', dirname(dirname(__FILE__)));
+	require_once(__ROOT__.'\conectar_db.php');
 	
 	//Se ha buscado algo en el filtro?
 		//Se genera un query para filtrar
@@ -22,7 +28,7 @@
 </head>
 <body>
 	<!-- Se esta insertando el menú-->
-	<?php require('render_menu.php');?>
+	<?php require(__ROOT__.'\render_menu.php');?>
 	
 	<!-- Mostrar datos de la tabla de personas-->
 	<div class="container">

@@ -1,12 +1,14 @@
 <?php 
+	session_start();
+	$estaLogeado = isset($_SESSION['userID']);
+	if(!$estaLogeado){
+		header("location: /inventario/usuarios/login.php");
+	}
+
 	//Código para conectar
-	define('__ROOT__', $_SERVER['DOCUMENT_ROOT'].'/Inventario');
+	define('__ROOT__', dirname(dirname(__FILE__)));
 	require_once(__ROOT__.'\conectar_db.php');
 	
-	//Se ha buscado algo en el filtro?
-		//Se genera un query para filtrar
-	//Si no
-	//Codigo para ejecutar query
 	$sql = "SELECT * FROM personas";
 	$result = $conn->query($sql);
 
@@ -18,8 +20,8 @@
 	<meta charset="UTF-8">
 	<title>Listado de personas</title>
 	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	 <link rel="stylesheet" type="text/css" href="estilo/css/font-awesome.min.css">
-	 <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+	 <link rel="stylesheet" type="text/css" href="/inventario/estilo/css/font-awesome.min.css">
+	 <link rel="stylesheet" type="text/css" href="/inventario/estilo/estilo.css">
 </head>
 <body>
 	<!-- Se esta insertando el menú-->
